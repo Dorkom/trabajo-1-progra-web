@@ -1,16 +1,19 @@
-
 #cabecera{
     background-color:rgb(208, 228, 28);
 }
 #centro{
     background-color: rgb(1, 247, 255);
 }
-#cuadro_iz{
+#cuadro_izquierda{
     background-color: rgb(114, 228, 38);
 }
-#cuadro_der{
+#cuadro_derecha{
     background-color: rgb(26, 1, 255);
 }
 #abajo{
     background-color: rgb(82, 17, 33);
+}
+.container {
+    max-width: 1920px;
+    width: 70%;
 }
