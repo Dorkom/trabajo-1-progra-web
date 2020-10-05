@@ -132,9 +132,35 @@ function obtenerMatrixDeMapa(mapa){
     }
     return matrixMapa
 }
+    //-----------------------------------------------------------------------------------------------------------
+var main = function(){
+    //primero se ingresa el mapa default
+    //to do
+    //aca se deberia poner el ingreso de datos a forma de cuadro de texto o aleatorio
+    /*mapaInicial = `
+    0000#
+    00000
+    00000
+    00000
+    +0000
+    `
+    mapaMinas = `
+    0000#
+    0$$$0
+    0$000
+    0$000
+    +$000
+    `*/
 
+    //se tendria que ponder botones a forma de flechas para indicar la direccion en que se movera el personaje
+    document.getElementById("arriba").addEventListener("click",mover("up", mapaActual, mapaMinas))
+    document.getElementById("abajo").addEventListener("click",mover("down", mapaActual, mapaMinas))
+    document.getElementById("izquierda").addEventListener("click",mover("left", mapaActual, mapaMinas))
+    document.getElementById("derecha").addEventListener("click",mover("right", mapaActual, mapaMinas))
+}
+window.addEventListener("load",main)
 
-
+    //-----------------------------------------------------------------------------------------------------------
 //ejemplo
 mapaInicial = `
 0000#
