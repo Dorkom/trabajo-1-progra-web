@@ -2,29 +2,38 @@ function mover(accion, mapaActual, mapaMinas){
     acciones = ["up", "down", "left", "right"]
     //-----------------------------------------------------------------------------------------------------------
     //errores
-    if(acciones.indexOf(accion) == -1){
+    if(acciones.indexOf(accion) == -1){//si se presiona alguna otra tecla devuelve el mensaje
         return "error: accion no definida"
     }
     CARACTER_FIN = "@"
-    if(mapaActual.indexOf(CARACTER_FIN) >= 0){
+    if(mapaActual.indexOf(CARACTER_FIN) >= 0){//si el caracter de fin no se encuentra en mapaActual devuelve el mensaje
         return "error: no se puede ejecutar más acciones"
     }
+    //aca se definen las matrices en las que se trabajara
     matrixActual = mapaActual.trim().split("\n")//el mapa actual se ingresa via consola o en nuestro caso via cuadro de texto o aleatoriamente
-    matrixMinas = mapaMinas.trim().split("\n")//el mapa de minas tmb se ingresa via texto o se generaria un mapa aleatoriamente
+                                                //se eliminan los bordes y luego se divide en tres partes segun /n
+                                                //matrixActual = [0000#,00000,00000,00000,+0000]
+
+    matrixMinas = mapaMinas.trim().split("\n")  //el mapa de minas tmb se ingresa via texto o se generaria un mapa aleatoriamente
+                                                //matrixMinas = [0000#,0$$$0,0$000,0$000,+$000]
     if(matrixActual.length == 0){
         return "error: mapa actual no puede ser vacío"
     }
     if(matrixMinas.length == 0){
         return "error: mapa minas no puede ser vacío"
     }
-    rowsActual = matrixActual.length
-    colsActual = matrixActual[0].length
+
+    //----------------------------------------------------------------------------------------------------------mapa
+    rowsActual = matrixActual.length//numero de filas
+    colsActual = matrixActual[0].length//numero de columnas
     for(i = 0; i < matrixActual.length; i++){
-        if(matrixActual[i].length != colsActual){
+        if(matrixActual[i].length != colsActual){//si hay alguna fila con diferente numero de columnas
             return "error: dimensiones incorrectas para mapa actual"
         }
         matrixActual[i] = matrixActual[i].split("")
-    }    
+    }
+
+    //----------------------------------------------------------------------------------------------------------minas
     rowsMinas = matrixMinas.length
     colsMinas = matrixMinas[0].length
     for(i = 0; i < matrixMinas.length; i++){
@@ -35,6 +44,7 @@ function mover(accion, mapaActual, mapaMinas){
     if(rowsActual != rowsMinas || colsActual != colsMinas){
         return "error: dimesiones distintas para mapa actual y minas"
     }
+
     //-----------------------------------------------------------------------------------------------------------
     //aca empieza el codigo
     CARACTER_POSICION_ACTUAL = "+"
@@ -44,7 +54,7 @@ function mover(accion, mapaActual, mapaMinas){
         x = matrixActual[i].indexOf(CARACTER_POSICION_ACTUAL)
         if(x >= 0){
             y = i
-            break
+            break//se consigue la posicion del personaje y se anota la posicion del arreglo en que se encontro
         }
     }
     x0 = x
