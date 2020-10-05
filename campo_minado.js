@@ -132,12 +132,21 @@ function obtenerMatrixDeMapa(mapa){
     }
     return matrixMapa
 }
+
+function mostrar(mapaActual){
+
+}
+function mapaNuevo(mapaActual){
+
+}
+function refrescar(accion, mapaActual, mapaMinas,mapaPrevio){
+
+}
     //-----------------------------------------------------------------------------------------------------------
 var main = function(){
     //primero se ingresa el mapa default
     //to do
-    //aca se deberia poner el ingreso de datos a forma de cuadro de texto o aleatorio
-    /*mapaInicial = `
+    mapaInicial = `
     0000#
     00000
     00000
@@ -150,13 +159,25 @@ var main = function(){
     0$000
     0$000
     +$000
-    `*/
+    `
+    mapaActual = mapaInicial
+    console.log(mapaActual)
+    mapaPrevio = mapaActual
 
     //se tendria que ponder botones a forma de flechas para indicar la direccion en que se movera el personaje
-    document.getElementById("arriba").addEventListener("click",mover("up", mapaActual, mapaMinas))
-    document.getElementById("abajo").addEventListener("click",mover("down", mapaActual, mapaMinas))
-    document.getElementById("izquierda").addEventListener("click",mover("left", mapaActual, mapaMinas))
-    document.getElementById("derecha").addEventListener("click",mover("right", mapaActual, mapaMinas))
+    document.getElementById("arriba").addEventListener("click",refrescar("up", mapaActual, mapaMinas,mapaPrevio))
+    document.getElementById("abajo").addEventListener("click",refrescar("down", mapaActual, mapaMinas,mapaPrevio))
+    document.getElementById("izquierda").addEventListener("click",refrescar("left", mapaActual, mapaMinas,mapaPrevio))
+    document.getElementById("derecha").addEventListener("click",refrescar("right", mapaActual, mapaMinas,mapaPrevio))
+    
+    //ESTO QUE ES!!
+    console.log(obtenerMatrixDeMapa(mapaActual))
+    /*
+    mover("up", mapaActual, mapaMinas)
+    mostrar(mapaActual)
+    obtenerResultado(mapaActual, mapaPrevio)
+    mapaNuevo(mapaActual)*/
+
 }
 window.addEventListener("load",main)
 
@@ -179,38 +200,47 @@ mapaMinas = `
 mapaActual = mapaInicial
 console.log(mapaActual)
 mapaPrevio = mapaActual
+
 mapaActual = mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
+
 mapaActual = mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
