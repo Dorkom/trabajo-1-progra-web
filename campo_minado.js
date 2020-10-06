@@ -134,13 +134,13 @@ function obtenerMatrixDeMapa(mapa){
 }
 
 function mostrar(mapaActual){
-
-}
-function mapaNuevo(mapaActual){
-
+    
 }
 function refrescar(accion, mapaActual, mapaMinas,mapaPrevio){
-
+    mover(accion, mapaActual, mapaMinas);
+    mostrar(mapaActual);
+    obtenerResultado(mapaActual, mapaPrevio);
+    mapaPrevio = mapaActual;
 }
     //-----------------------------------------------------------------------------------------------------------
 var main = function(){
