@@ -135,51 +135,81 @@ function obtenerMatrixDeMapa(mapa){
 
 
 var refrescar = function(){
-    accion = this.innerHTML;
-    mapaActual = mover(accion, mapaActual, mapaMinas);
-    document.getElementById("cuadro_izquierda").value = mapaActual;
-    
-    document.getElementById("cuadro_ayuda").value = obtenerResultado(mapaActual, mapaPrevio);
+//function refrescar(accion, mapaPrevio, mapaActual, mapaMinas){
+    /*mapaActual = mover("up", mapaActual, mapaMinas)
+    console.log(mapaActual)
+    console.log(obtenerResultado(mapaActual, mapaPrevio))
+    mapaPrevio = mapaActual*/
+
+    var la_accion = this.innerHTML;
+
+    mapaActual = mover(la_accion, mapaActual, mapaMinas);
+
+    mapa_temp2 = mapaActual
+    cuadro_temp2 = mapa_temp2.trim().split("\n");
+    document.getElementById("uno").innerHTML = cuadro_temp2[0];
+    document.getElementById("dos").innerHTML = cuadro_temp2[1];
+    document.getElementById("tres").innerHTML = cuadro_temp2[2];
+    document.getElementById("cuatro").innerHTML = cuadro_temp2[3];
+    document.getElementById("cinco").innerHTML = cuadro_temp2[4];
+
+    document.getElementById("cuadro_ayuda").innerHTML = obtenerResultado(mapaActual, mapaPrevio);
     mapaPrevio = mapaActual;
 }
     //-----------------------------------------------------------------------------------------------------------
 
 var main = function(){
 
-    mapaInicial = `
-    0000#
-    00000
-    00000
-    00000
-    +0000
-    `
-    mapaMinas = `
-    0000#
-    0$$$0
-    0$000
-    0$000
-    +$000
-    `
-    mapaActual = mapaInicial
-    document.querySelector("#videojuego_categoria").value = mapaActual;
-    //document.getElementById("cuadro_izquierda").value = mapaActual;
-    mapaPrevio = mapaActual    
+mapaInicial = `
+0000#
+00000
+00000
+00000
++0000
+`
+mapaMinas = `
+0000#
+0$$$0
+0$000
+0$000
++$000
+`
+    mapaActual = mapaInicial;
+    console.log(obtenerMatrixDeMapa(mapaActual))
+    mapa_temp = mapaActual
+    cuadro_temp = mapa_temp.trim().split("\n");
+    document.getElementById("uno").innerHTML = cuadro_temp[0];
+    document.getElementById("dos").innerHTML = cuadro_temp[1];
+    document.getElementById("tres").innerHTML = cuadro_temp[2];
+    document.getElementById("cuatro").innerHTML = cuadro_temp[3];
+    document.getElementById("cinco").innerHTML = cuadro_temp[4];
+    mapaPrevio = mapaActual;
 
-    document.getElementById("up").addEventListener("click",refrescar);
-    document.getElementById("down").addEventListener("click",refrescar);
-    document.getElementById("left").addEventListener("click",refrescar);
-    document.getElementById("right").addEventListener("click",refrescar);
+    console.log(obtenerMatrixDeMapa(mapaActual));
     
-    //ESTO QUE ES!!
-    //console.log(obtenerMatrixDeMapa(mapaActual))
-    /*
-    mover("up", mapaActual, mapaMinas)
-    mostrar(mapaActual)
-    obtenerResultado(mapaActual, mapaPrevio)
-    mapaNuevo(mapaActual)*/
+
+    /*document.getElementById("boton_arriba").addEventListener("click",refrescar("up", mapaPrevio, mapaActual, mapaMinas));
+    document.getElementById("boton_abajo").addEventListener("click",refrescar("down", mapaPrevio, mapaActual, mapaMinas));
+    document.getElementById("boton_izquierda").addEventListener("click",refrescar("left", mapaPrevio, mapaActual, mapaMinas));
+    document.getElementById("boton_derecha").addEventListener("click",refrescar("right", mapaPrevio, mapaActual, mapaMinas));
+    */
 
 }
+var main2 = function(){
+    /*
+    console.log(obtenerMatrixDeMapa(mapaActual));
+    document.getElementById("boton_arriba").addEventListener("click",refrescar("up", mapaPrevio, mapaActual, mapaMinas));
+    document.getElementById("boton_abajo").addEventListener("click",refrescar("down", mapaPrevio, mapaActual, mapaMinas));
+    document.getElementById("boton_izquierda").addEventListener("click",refrescar("left", mapaPrevio, mapaActual, mapaMinas));
+    document.getElementById("boton_derecha").addEventListener("click",refrescar("right", mapaPrevio, mapaActual, mapaMinas));
+    console.log(obtenerMatrixDeMapa(mapaActual));*/
+    document.getElementById("boton_arriba").addEventListener("click",refrescar);
+    document.getElementById("boton_abajo").addEventListener("click",refrescar);
+    document.getElementById("boton_izquierda").addEventListener("click",refrescar);
+    document.getElementById("boton_derecha").addEventListener("click",refrescar);
+}
 window.addEventListener("load",main)
+document.getElementById("boton_iniciar").addEventListener("click",main2)
 
     //-----------------------------------------------------------------------------------------------------------
 //ejemplo
