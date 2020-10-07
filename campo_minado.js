@@ -133,19 +133,19 @@ function obtenerMatrixDeMapa(mapa){
     return matrixMapa
 }
 
-function mostrar(mapaActual){
+
+var refrescar = function(){
+    accion = this.innerHTML;
+    mapaActual = mover(accion, mapaActual, mapaMinas);
+    document.getElementById("cuadro_izquierda").value = mapaActual;
     
-}
-function refrescar(accion, mapaActual, mapaMinas,mapaPrevio){
-    mover(accion, mapaActual, mapaMinas);
-    mostrar(mapaActual);
-    obtenerResultado(mapaActual, mapaPrevio);
+    document.getElementById("cuadro_ayuda").value = obtenerResultado(mapaActual, mapaPrevio);
     mapaPrevio = mapaActual;
 }
     //-----------------------------------------------------------------------------------------------------------
+
 var main = function(){
-    //primero se ingresa el mapa default
-    //to do
+
     mapaInicial = `
     0000#
     00000
@@ -161,17 +161,17 @@ var main = function(){
     +$000
     `
     mapaActual = mapaInicial
-    console.log(mapaActual)
-    mapaPrevio = mapaActual
+    document.querySelector("#videojuego_categoria").value = mapaActual;
+    //document.getElementById("cuadro_izquierda").value = mapaActual;
+    mapaPrevio = mapaActual    
 
-    //se tendria que ponder botones a forma de flechas para indicar la direccion en que se movera el personaje
-    document.getElementById("arriba").addEventListener("click",refrescar("up", mapaActual, mapaMinas,mapaPrevio))
-    document.getElementById("abajo").addEventListener("click",refrescar("down", mapaActual, mapaMinas,mapaPrevio))
-    document.getElementById("izquierda").addEventListener("click",refrescar("left", mapaActual, mapaMinas,mapaPrevio))
-    document.getElementById("derecha").addEventListener("click",refrescar("right", mapaActual, mapaMinas,mapaPrevio))
+    document.getElementById("up").addEventListener("click",refrescar);
+    document.getElementById("down").addEventListener("click",refrescar);
+    document.getElementById("left").addEventListener("click",refrescar);
+    document.getElementById("right").addEventListener("click",refrescar);
     
     //ESTO QUE ES!!
-    console.log(obtenerMatrixDeMapa(mapaActual))
+    //console.log(obtenerMatrixDeMapa(mapaActual))
     /*
     mover("up", mapaActual, mapaMinas)
     mostrar(mapaActual)
@@ -183,7 +183,7 @@ window.addEventListener("load",main)
 
     //-----------------------------------------------------------------------------------------------------------
 //ejemplo
-mapaInicial = `
+/*mapaInicial = `
 0000#
 00000
 00000
@@ -245,4 +245,4 @@ mapaActual = mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
 console.log(obtenerResultado(mapaActual, mapaPrevio))
 // 
-console.log(obtenerMatrixDeMapa(mapaActual))
+console.log(obtenerMatrixDeMapa(mapaActual))*/
