@@ -7,6 +7,18 @@
     <title>Campo Minado</title>
 </head>
 <body>
+
+    <!-- Esto lo hizo alexander -->
+    <div id="tvesModal" class="modalContainer">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h2>Bienvenido a nuestro juego</h2>
+           
+            <img class='imgruka' src="https://media1.tenor.com/images/5eab6c5257ba38dafc97c7118246bab3/tenor.gif?itemid=17763341" alt="ruka" >
+        </div>
+    </div>
+    <!-- Esto lo hizo alexander -->
+    
     <div class="container">
 
         <div class="row" id="cabecera">
@@ -23,9 +35,13 @@
             </div>
             <div class="col-4" id="cuadro_derecha">
                 <div class="row">
-                    <div class="col">aca arriba van</div>
-                    <div class="col"><button id="boton_iniciar" class="btn btn-primary btn-sm">iniciar</button></div>
-                    <div class="col">otros botones</div>
+                    <!-- Esto lo hizo alexander -->
+                    <div class="col"><button id="btnModal" class="btn btn-primary btn-sm">INSTRUCCIONES</button></div>
+                    
+                    <div class="col"><button id="boton_iniciar" class="btn btn-primary btn-sm">INICIAR</button></div>
+                    
+                    <div class="col"><a class="btn btn-primary btn-sm" href="acerca_de.html" target="_blank" role="button">ACERCA DE</a></div>
+                    <!-- Esto lo hizo alexander -->
                 </div>
                 <div class="row">
                     <div class="col"></div>
@@ -47,5 +63,7 @@
         </div>
     </div>
 </body>
+<script src="modal.js"></script>
 <script src="campo_minado.js"></script>
+<script src="modal_instrucciones.js"></script>
 </html>
