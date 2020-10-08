@@ -175,7 +175,7 @@ mapaMinas = `
 +$000
 `
     mapaActual = mapaInicial;
-    console.log(obtenerMatrixDeMapa(mapaActual))
+    //console.log(obtenerMatrixDeMapa(mapaActual))
     mapa_temp = mapaActual
     cuadro_temp = mapa_temp.trim().split("\n");
     document.getElementById("uno").innerHTML = cuadro_temp[0];
@@ -185,8 +185,9 @@ mapaMinas = `
     document.getElementById("cinco").innerHTML = cuadro_temp[4];
     mapaPrevio = mapaActual;
 
-    console.log(obtenerMatrixDeMapa(mapaActual));
-    
+    //console.log(obtenerMatrixDeMapa(mapaActual));
+    //al abrir la pagina se esconde el cuadro del juego
+    document.getElementById("cuadro_izquierda").style.display = "none"
 
     /*document.getElementById("boton_arriba").addEventListener("click",refrescar("up", mapaPrevio, mapaActual, mapaMinas));
     document.getElementById("boton_abajo").addEventListener("click",refrescar("down", mapaPrevio, mapaActual, mapaMinas));
@@ -195,7 +196,7 @@ mapaMinas = `
     */
 
 }
-var main2 = function(){
+var juego = function(){
     /*
     console.log(obtenerMatrixDeMapa(mapaActual));
     document.getElementById("boton_arriba").addEventListener("click",refrescar("up", mapaPrevio, mapaActual, mapaMinas));
@@ -203,13 +204,36 @@ var main2 = function(){
     document.getElementById("boton_izquierda").addEventListener("click",refrescar("left", mapaPrevio, mapaActual, mapaMinas));
     document.getElementById("boton_derecha").addEventListener("click",refrescar("right", mapaPrevio, mapaActual, mapaMinas));
     console.log(obtenerMatrixDeMapa(mapaActual));*/
+
+    //esconder boton iniciar y aparecer el cuadro
+    document.getElementById("boton_jugar").style.display = "none";
+    document.getElementById("cuadro_izquierda").style.display = "block"
+    document.getElementById("boton_nuevo_juego").style.display = "block";
+
     document.getElementById("boton_arriba").addEventListener("click",refrescar);
     document.getElementById("boton_abajo").addEventListener("click",refrescar);
     document.getElementById("boton_izquierda").addEventListener("click",refrescar);
     document.getElementById("boton_derecha").addEventListener("click",refrescar);
 }
+var nuevojuego = function(){
+    //se vuelve a llamar a la funcion main y se refresca el cuadro de estado
+    main()
+    document.getElementById("cuadro_ayuda").innerHTML = obtenerResultado(mapaActual, mapaPrevio);
+
+    //esconder boton nuevo juego y esconder cuadro
+    document.getElementById("boton_nuevo_juego").style.display = "none";
+    document.getElementById("cuadro_izquierda").style.display = "none"
+    document.getElementById("boton_jugar").style.display = "block";
+
+}
+
+//esconder boton jugar al cargar
+document.getElementById("boton_jugar").style.display = "none";
+
+
 window.addEventListener("load",main)
-document.getElementById("boton_iniciar").addEventListener("click",main2)
+document.getElementById("boton_jugar").addEventListener("click",juego)
+document.getElementById("boton_nuevo_juego").addEventListener("click",nuevojuego)
 
     //-----------------------------------------------------------------------------------------------------------
 //ejemplo
